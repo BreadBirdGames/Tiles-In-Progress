@@ -26,9 +26,8 @@ func can_drop_data(at_position, data):
 	return data.type == "DropItem"
 
 func drop_data(at_position, data):
-	var tilemap_position = tilemap_node.world_to_map(at_position)
-	
-	print(tilemap_position)
+	var global_position = camera_node.get_global_mouse_position()
+	var tilemap_position = tilemap_node.world_to_map(global_position)
 	
 	match data.item_id:
 		DragItem.Items.Dirt:
