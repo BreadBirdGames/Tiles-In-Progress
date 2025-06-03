@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Panel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/WaterTile.tscn" type="PackedScene" id=4]
+
+[node name="Node2D" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_scale = 2.0
+
+[node name="Panel" parent="CanvasLayer" instance=ExtResource( 2 )]
+camera = NodePath("../../Camera2D")
+tilemap = NodePath("../../TileMap")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 960, 0 )
+current = true
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2( 0, 1 )
+z_index = 2
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 512, 512 )
+cell_quadrant_size = 128
+format = 1
+tile_data = PoolIntArray( -65536, 0, 0, -65533, 0, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 0, 0, 2, 0, 0, 3, 1, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0 )
+
+[node name="Enemy" parent="." instance=ExtResource( 3 )]
+position = Vector2( 928, -444 )
+
+[node name="WaterTile" parent="." instance=ExtResource( 4 )]
+position = Vector2( 773, 660 )
+z_index = 1
+
+[node name="WaterTile2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1285, 660 )
+z_index = 1

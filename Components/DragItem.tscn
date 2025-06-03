@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/DragItem.gd" type="Script" id=1]
+
+[node name="DragItem" type="Panel"]
+rect_min_size = Vector2( 190, 190 )
+script = ExtResource( 1 )
+texture_rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
