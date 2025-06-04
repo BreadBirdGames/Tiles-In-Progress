@@ -23,7 +23,7 @@ func _ready():
 	
 	texture_node.texture = texture
 
-func get_drag_data(position):
+func get_drag_data(_position):
 	var icon = TextureRect.new()
 	var preview = Control.new()
 	icon.expand = true
@@ -34,10 +34,5 @@ func get_drag_data(position):
 	preview.rect_min_size = Vector2(100, 100)
 	#preview.z_index = 60
 	set_drag_preview(preview)
+	
 	return { type = "DropItem", item_id = item_type }
-
-func _can_drop_data(at_position, data):
-	return true
-
-func _drop_data(at_position, data):
-	print(data)

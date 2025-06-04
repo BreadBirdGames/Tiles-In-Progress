@@ -10,10 +10,13 @@ export(NodePath) var grid = null
 var grid_node: Node2D = null
 
 export var dirt_tile_index = 0
+export var occupied_tile_index = 2
 export(PackedScene) var water_tile = null
 export(PackedScene) var enemy = null
 
 func _ready():
+	rect_size = Vector2(0,0)
+	
 	if typeof(get_node(camera)) != typeof(Camera2D):
 		printerr("camera_node = is not of type Camera2D")
 		return
@@ -28,12 +31,13 @@ func _ready():
 		printerr("grid_node = is not of type Node2D")
 		return
 	grid_node = get_node(grid) as Node2D
+	grid_node.hide()
 
 func get_current_tile_pos():
 	var global_position = camera_node.get_global_mouse_position()
 	return tilemap_node.world_to_map(global_position)
 
-func can_drop_data(at_position, data):
+func can_drop_data(_at_position, data):
 	if data.type != "DropItem":
 		return false
 	
@@ -46,9 +50,12 @@ func can_drop_data(at_position, data):
 		if tilemap_position.y > -1:
 			return false
 	
+	if tilemap_node.get_cellv(tilemap_position) == occupied_tile_index:
+		return false
+	
 	return true
 
-func drop_data(at_position, data):
+func drop_data(_at_position, data):
 	var tilemap_position = get_current_tile_pos()
 	
 	match data.item_id:
@@ -65,6 +72,7 @@ func drop_data(at_position, data):
 		DragItem.Items.Monster:
 			var tile = enemy.instance()
 			tile.global_position = tilemap_node.map_to_world(tilemap_position)
+			tilemap_node.set_cellv(tilemap_position, occupied_tile_index)
 			tilemap_node.add_child(tile)
 			continue
 		DragItem.Items.None:

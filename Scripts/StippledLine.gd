@@ -1,11 +1,11 @@
 extends Control
 
 export var end_position: Vector2 = Vector2(140,0)
-export var width: float = 10
-export var color: Color = Color.white
-export var dash_length: float = 5
+export var input_width: float = 10
+export var input_color: Color = Color.white
+export var input_dash_length: float = 5
 
-func _process(delta):
+func _process(_delta):
 	update()
 
 func _draw():
@@ -13,9 +13,9 @@ func _draw():
 	draw_dashed_line(
 		rect_position + rect_pivot_offset, 
 		rect_position + end_position + rect_pivot_offset, 
-		color, 
-		width, 
-		dash_length, 
+		input_color, 
+		input_width, 
+		input_dash_length, 
 		false)
 
 
@@ -32,7 +32,7 @@ func draw_dashed_line(from, to, color, width, dash_length = 5, cap_end = false, 
 		var draw_flag = true
 		var segment_start = from
 		var steps = length/dash_length
-		for start_length in range(0, steps + 1):
+		for _start_length in range(0, steps + 1):
 			var segment_end = segment_start + dash_step
 			if draw_flag:
 				draw_line(segment_start, segment_end, color, width, antialiased)

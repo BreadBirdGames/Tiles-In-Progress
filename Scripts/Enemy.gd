@@ -14,6 +14,9 @@ var sprite_node: Sprite = null
 var direction = -1
 var velocity = Vector2()
 
+func kill():
+	pass
+
 func _ready():
 	if typeof(get_node(left_raycast)) != typeof(RayCast2D):
 		printerr("left_raycast is not of type RayCast2D")
