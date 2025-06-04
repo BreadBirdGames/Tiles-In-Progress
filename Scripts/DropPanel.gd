@@ -53,11 +53,13 @@ func drop_data(at_position, data):
 	
 	match data.item_id:
 		DragItem.Items.Dirt:
-			tilemap_node.set_cell(tilemap_position.x, tilemap_position.y, dirt_tile_index)
+			tilemap_node.set_cellv(tilemap_position, dirt_tile_index)
+			tilemap_node.update_dirty_quadrants()
 			continue
 		DragItem.Items.Water:
 			var tile = water_tile.instance()
 			tile.global_position = tilemap_node.map_to_world(tilemap_position)
+			tilemap_node.set_cellv(tilemap_position, -1)
 			tilemap_node.add_child(tile)
 			continue
 		DragItem.Items.Monster:
