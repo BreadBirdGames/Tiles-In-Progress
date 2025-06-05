@@ -14,6 +14,7 @@ export(Items) var item_type
 export var texture: Texture = null
 export(NodePath) var texture_rect = null
 var texture_node: TextureRect = null
+var modulation = []
 
 func _ready():
 	if typeof(get_node(texture_rect)) != typeof(TextureRect):
@@ -22,6 +23,11 @@ func _ready():
 	texture_node = get_node(texture_rect) as TextureRect
 	
 	texture_node.texture = texture
+	
+	if item_type == Items.JumpUp:
+		modulation.append(Color.green)
+	elif item_type == Items.SpeedUp:
+		modulation.append(Color.blue)
 
 func get_drag_data(_position):
 	var icon = TextureRect.new()
@@ -35,4 +41,4 @@ func get_drag_data(_position):
 	#preview.z_index = 60
 	set_drag_preview(preview)
 	
-	return { type = "DropItem", item_id = item_type }
+	return { type = "DropItem", item_id = item_type, modulation = modulation }

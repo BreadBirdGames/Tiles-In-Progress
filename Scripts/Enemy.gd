@@ -4,6 +4,7 @@ export(NodePath) var left_raycast = null
 export(NodePath) var right_raycast = null
 export(int) var run_speed = 100
 export(int) var gravity = 1200
+export(float) var death_speed = 0.4
 
 export(NodePath) var sprite = null
 
@@ -14,8 +15,8 @@ var sprite_node: Sprite = null
 var direction = -1
 var velocity = Vector2()
 
-func kill():
-	pass
+var dying: bool = false
+var t: float = 0.0
 
 func _ready():
 	if typeof(get_node(left_raycast)) != typeof(RayCast2D):
@@ -32,6 +33,8 @@ func _ready():
 		printerr("sprite_node is not of type Sprite")
 		return
 	sprite_node = get_node(sprite) as Sprite
+	
+	sprite_node.material.set_shader_param("progress", 0.0)
 
 func check_if_colliding(raycast: RayCast2D):
 	var body = raycast.get_collider()
@@ -45,7 +48,20 @@ func check_if_colliding(raycast: RayCast2D):
 	direction = -1 if direction == 1 else 1
 	sprite_node.flip_h = true if direction == 1 else false
 
+func kill():
+	dying = true
+	t = 0.0
+
 func _physics_process(delta):
+	if dying:
+		t += delta * death_speed
+		sprite_node.material.set_shader_param("progress", t)
+		
+		if t > 1:
+			queue_free()
+		
+		return
+
 	velocity.x = 0
 	
 	check_if_colliding(right)
@@ -57,4 +73,4 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 
 func drown():
-	queue_free()
+	kill()

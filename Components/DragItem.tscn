@@ -8,6 +8,8 @@ script = ExtResource( 1 )
 texture_rect = NodePath("TextureRect")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_top = 5.0
+margin_right = 180.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 180, 180 )
 expand = true

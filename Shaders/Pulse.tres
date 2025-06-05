@@ -1,0 +1,40 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 color: hint_color = vec4(1.0);
+uniform float outer_radius = 0.35;
+uniform float inner_radius = 0.275;
+uniform float speed = 1;
+uniform float time_offset = 0;
+
+float circle(vec2 position, float radius, float feather)
+{
+	return smoothstep(radius, radius + feather, length(position - vec2(0.5)));
+}
+
+float repeating_fade(float _time, float _interval, float _time_offset) {
+    float t = mod(_time + _time_offset, _interval);
+    return 1.0 - (t / _interval);
+}
+
+void fragment(){
+	float time_fade = repeating_fade(TIME, speed, time_offset);
+	
+	float outer = circle(vec2(UV.x, UV.y), time_fade * outer_radius, 0.01);
+	float fade_effect = sin(TIME) * 0.01;
+	float inner = 1.0 - circle(vec2(UV.x, UV.y), time_fade * inner_radius, time_fade * (0.1 - fade_effect) );
+	
+	COLOR = color;
+	COLOR.a -= (outer + inner);
+}"
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/color = Color( 1, 1, 1, 1 )
+shader_param/outer_radius = 0.35
+shader_param/inner_radius = 0.275
+shader_param/speed = 1.5
+shader_param/time_offset = 0.0
