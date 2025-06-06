@@ -10,6 +10,10 @@ uniform float line_width : hint_range(0, 1) = 0.1;
 uniform vec2 offset = vec2(0.0, 0.0);
 uniform float grid_size = 16.0;
 
+uniform float position : hint_range(-0.5, 0.5) = 0.0;
+uniform float shader_size : hint_range(0.5, 5) = 0.5;
+uniform float angle : hint_range(0.0, 360.0) = 0.0;
+
 void fragment() {
 	vec2 uv = (offset / size) + UV;
 	vec2 r = mod(size * uv, vec2(grid_size));
@@ -18,6 +22,12 @@ void fragment() {
 	
 	COLOR = color;
 	COLOR.a = alpha;
+	
+	float pivot = position + 0.5;
+	uv = UV - pivot;
+	float rotated = uv.x * cos(radians(angle)) - uv.y * sin(radians(angle)); 
+	float pos = smoothstep((1.0 - shader_size) + position, shader_size + 0.0001 + position, rotated + pivot);
+	COLOR = mix(COLOR, color, pos);
 }
 "
 
@@ -28,3 +38,6 @@ shader_param/size = Vector2( 1080, 540 )
 shader_param/line_width = 0.05
 shader_param/offset = Vector2( -0.2, 0 )
 shader_param/grid_size = 54.0
+shader_param/position = 0.45
+shader_param/shader_size = 0.55
+shader_param/angle = 270.0

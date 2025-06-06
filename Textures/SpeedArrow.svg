@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   viewBox="0 0 179.99999 180"
+   width="180"
+   height="180"
+   id="svg7"
+   sodipodi:docname="SpeedArrow.svg"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="3.0979675"
+     inkscape:cx="99.904211"
+     inkscape:cy="96.030704"
+     inkscape:window-width="1512"
+     inkscape:window-height="812"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg7" />
+  <!-- svg-source:excalidraw -->
+  <metadata
+     id="metadata1" />
+  <defs
+     id="defs1">
+    <style
+       class="style-fonts"
+       id="style1" />
+  </defs>
+  <mask
+     id="mask3" />
+  <mask
+     id="mask5" />
+  <g
+     id="g8"
+     transform="translate(2.138045,25.113137)">
+    <g
+       stroke-linecap="round"
+       id="g3">
+      <g
+         transform="translate(10,16.49748)"
+         fill-rule="evenodd"
+         id="g2">
+        <path
+           d="M 0,0 C 4.81,7.11 27.07,25.45 28.85,42.66 30.64,59.87 5.91,102.29 10.72,103.25 15.52,104.21 59.49,65.64 57.7,48.43 55.92,31.22 9.62,8.07 0,0"
+           stroke="none"
+           stroke-width="0"
+           fill="#a5d8ff"
+           fill-rule="evenodd"
+           id="path1" />
+        <path
+           d="M 0,0 C 4.81,7.11 27.07,25.45 28.85,42.66 30.64,59.87 5.91,102.29 10.72,103.25 15.52,104.21 59.49,65.64 57.7,48.43 55.92,31.22 9.62,8.07 0,0 M 0,0 C 4.81,7.11 27.07,25.45 28.85,42.66 30.64,59.87 5.91,102.29 10.72,103.25 15.52,104.21 59.49,65.64 57.7,48.43 55.92,31.22 9.62,8.07 0,0"
+           stroke="#1971c2"
+           stroke-width="2"
+           fill="none"
+           id="path2" />
+      </g>
+    </g>
+    <g
+       stroke-linecap="round"
+       id="g5">
+      <g
+         transform="translate(55.206985,16.182477)"
+         fill-rule="evenodd"
+         id="g4">
+        <path
+           d="M 0,0 C 5.05,9.41 28.51,39.26 30.29,56.47 32.08,73.67 6.32,105.93 10.72,103.25 15.11,100.57 58.46,57.6 56.67,40.39 54.89,23.18 9.45,6.73 0,0"
+           stroke="none"
+           stroke-width="0"
+           fill="#a5d8ff"
+           fill-rule="evenodd"
+           id="path3" />
+        <path
+           d="M 0,0 C 5.05,9.41 28.51,39.26 30.29,56.47 32.08,73.67 6.32,105.93 10.72,103.25 15.11,100.57 58.46,57.6 56.67,40.39 54.89,23.18 9.45,6.73 0,0 M 0,0 C 5.05,9.41 28.51,39.26 30.29,56.47 32.08,73.67 6.32,105.93 10.72,103.25 15.11,100.57 58.46,57.6 56.67,40.39 54.89,23.18 9.45,6.73 0,0"
+           stroke="#1971c2"
+           stroke-width="2"
+           fill="none"
+           id="path4" />
+      </g>
+    </g>
+    <g
+       stroke-linecap="round"
+       id="g7">
+      <g
+         transform="translate(107.75804,10)"
+         fill-rule="evenodd"
+         id="g6">
+        <path
+           d="M 0,0 C 4.22,9.55 23.56,40.08 25.35,57.29 27.13,74.5 5.29,104.59 10.72,103.25 16.14,101.91 59.7,66.46 57.91,49.25 56.12,32.05 9.65,8.21 0,0"
+           stroke="none"
+           stroke-width="0"
+           fill="#a5d8ff"
+           fill-rule="evenodd"
+           id="path5" />
+        <path
+           d="M 0,0 C 4.22,9.55 23.56,40.08 25.35,57.29 27.13,74.5 5.29,104.59 10.72,103.25 16.14,101.91 59.7,66.46 57.91,49.25 56.12,32.05 9.65,8.21 0,0 M 0,0 C 4.22,9.55 23.56,40.08 25.35,57.29 27.13,74.5 5.29,104.59 10.72,103.25 16.14,101.91 59.7,66.46 57.91,49.25 56.12,32.05 9.65,8.21 0,0"
+           stroke="#1971c2"
+           stroke-width="2"
+           fill="none"
+           id="path6" />
+      </g>
+    </g>
+  </g>
+  <mask
+     id="mask7" />
+</svg>

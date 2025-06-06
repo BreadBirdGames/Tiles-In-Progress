@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Components/DragItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/StippledLine.gd" type="Script" id=2]
@@ -6,10 +6,12 @@
 [ext_resource path="res://Sprites/Enemy.png" type="Texture" id=4]
 [ext_resource path="res://Theme.tres" type="Theme" id=5]
 [ext_resource path="res://Sprites/DirtUI.png" type="Texture" id=6]
-[ext_resource path="res://icon.png" type="Texture" id=7]
+[ext_resource path="res://Textures/SpeedArrow.svg" type="Texture" id=7]
 [ext_resource path="res://Scripts/DropPanel.gd" type="Script" id=8]
 [ext_resource path="res://Textures/DynaPuff-VariableFont_wdth,wght.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://Components/HUD.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Textures/JumpArrow.svg" type="Texture" id=11]
+[ext_resource path="res://Components/DragPreview.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=2]
 resource_name = "HideUI"
@@ -201,62 +203,65 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
-margin_right = 204.0
+margin_right = 210.0
 margin_bottom = 1080.0
 rect_scale = Vector2( 1e-05, 1 )
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 197.0
-margin_bottom = 1073.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 200.0
+margin_bottom = 1070.0
 size_flags_horizontal = 7
 size_flags_vertical = 7
 alignment = 1
 
 [node name="Spacer" type="Control" parent="HBoxContainer/PanelContainer/VBoxContainer"]
 margin_right = 190.0
-margin_bottom = 8.0
+margin_bottom = 7.0
 size_flags_vertical = 3
 
 [node name="DragItem" parent="HBoxContainer/PanelContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 12.0
+margin_top = 11.0
 margin_right = 190.0
-margin_bottom = 202.0
+margin_bottom = 201.0
 item_type = 1
 texture = ExtResource( 6 )
+drag_preview = ExtResource( 12 )
 
 [node name="Spacer2" type="Control" parent="HBoxContainer/PanelContainer/VBoxContainer"]
-margin_top = 206.0
+margin_top = 205.0
 margin_right = 190.0
-margin_bottom = 214.0
+margin_bottom = 212.0
 size_flags_vertical = 3
 
 [node name="DragItem2" parent="HBoxContainer/PanelContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 218.0
+margin_top = 216.0
 margin_right = 190.0
-margin_bottom = 408.0
+margin_bottom = 406.0
 item_type = 2
 texture = ExtResource( 3 )
+drag_preview = ExtResource( 12 )
 
 [node name="Spacer3" type="Control" parent="HBoxContainer/PanelContainer/VBoxContainer"]
-margin_top = 412.0
+margin_top = 410.0
 margin_right = 190.0
-margin_bottom = 420.0
+margin_bottom = 417.0
 size_flags_vertical = 3
 
 [node name="DragItem3" parent="HBoxContainer/PanelContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 424.0
+margin_top = 421.0
 margin_right = 190.0
-margin_bottom = 614.0
+margin_bottom = 611.0
 item_type = 3
 texture = ExtResource( 4 )
+drag_preview = ExtResource( 12 )
 
 [node name="StippledLine" type="Control" parent="HBoxContainer/PanelContainer/VBoxContainer"]
-margin_top = 618.0
+margin_top = 615.0
 margin_right = 190.0
-margin_bottom = 653.0
+margin_bottom = 650.0
 rect_min_size = Vector2( 140, 35 )
 rect_pivot_offset = Vector2( 0, 17.5 )
 script = ExtResource( 2 )
@@ -264,48 +269,50 @@ end_position = Vector2( 190, 0 )
 input_dash_length = 17.0
 
 [node name="DragItem4" parent="HBoxContainer/PanelContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 657.0
+margin_top = 654.0
 margin_right = 190.0
-margin_bottom = 847.0
+margin_bottom = 844.0
 item_type = 5
-texture = ExtResource( 7 )
+texture = ExtResource( 11 )
+drag_preview = ExtResource( 12 )
 
 [node name="Spacer4" type="Control" parent="HBoxContainer/PanelContainer/VBoxContainer"]
-margin_top = 851.0
+margin_top = 848.0
 margin_right = 190.0
-margin_bottom = 859.0
+margin_bottom = 855.0
 size_flags_vertical = 3
 
 [node name="DragItem5" parent="HBoxContainer/PanelContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 863.0
+margin_top = 859.0
 margin_right = 190.0
-margin_bottom = 1053.0
+margin_bottom = 1049.0
 item_type = 4
 texture = ExtResource( 7 )
+drag_preview = ExtResource( 12 )
 
 [node name="Spacer5" type="Control" parent="HBoxContainer/PanelContainer/VBoxContainer"]
-margin_top = 1057.0
+margin_top = 1053.0
 margin_right = 190.0
-margin_bottom = 1066.0
+margin_bottom = 1060.0
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 208.0
+margin_left = 214.0
 margin_right = 1920.0
 margin_bottom = 1080.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
-margin_right = 1712.0
-margin_bottom = 114.0
+margin_right = 1706.0
+margin_bottom = 120.0
 rect_scale = Vector2( 1, 1e-05 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 1705.0
-margin_bottom = 107.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1696.0
+margin_bottom = 110.0
 alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer"]
@@ -317,13 +324,13 @@ text = "Tiles In Progress"
 
 [node name="Control" type="Control" parent="HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer"]
 margin_left = 528.0
-margin_right = 1494.0
+margin_right = 1482.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 
 [node name="PlayButton" type="Button" parent="HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer"]
-margin_left = 1498.0
-margin_right = 1698.0
+margin_left = 1486.0
+margin_right = 1686.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 200, 100 )
 text = "Play"
@@ -331,7 +338,7 @@ text = "Play"
 [node name="HUD" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 10 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1712.0
-margin_bottom = 962.0
+margin_right = 1706.0
+margin_bottom = 956.0
 size_flags_horizontal = 3
 size_flags_vertical = 3

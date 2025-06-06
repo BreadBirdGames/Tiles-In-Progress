@@ -102,7 +102,7 @@ func drop_data(_at_position, data):
 			continue
 		DragItem.Items.JumpUp:
 			global_data.stats.DispJumpMult += 1
-			global_data.stats.JumpMult += 0.25
+			global_data.stats.JumpMult += 0.5
 			continue
 		DragItem.Items.SpeedUp:
 			global_data.stats.SpeedMult += 1

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   viewBox="0 0 180 180.00001"
+   width="180"
+   height="180"
+   id="svg3"
+   sodipodi:docname="JumpArrow.svg"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview3"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="112.07642"
+     inkscape:cy="60.45763"
+     inkscape:window-width="1512"
+     inkscape:window-height="812"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3" />
+  <!-- svg-source:excalidraw -->
+  <metadata
+     id="metadata1" />
+  <defs
+     id="defs1">
+    <style
+       class="style-fonts"
+       id="style1" />
+  </defs>
+  <g
+     stroke-linecap="round"
+     id="g3"
+     transform="translate(29.645973,5.5240974)">
+    <g
+       transform="translate(45.719944,51.11743)"
+       fill-rule="evenodd"
+       id="g2">
+      <path
+         d="M 0,0 C -1.76,8.39 -14.83,32.74 -10.54,50.36 -6.25,67.98 14.52,98.9 25.76,105.72 37,112.54 57.85,101.45 56.88,91.29 55.91,81.14 23.29,59.53 19.96,44.79 16.63,30.06 29.4,6.68 36.89,2.89 44.38,-0.91 66.15,29.37 64.92,22.05 63.68,14.73 46.16,-38.47 29.47,-41.01 12.78,-43.55 -30.33,-0.03 -35.24,6.8 -40.15,13.64 -5.87,1.13 0,0"
+         stroke="none"
+         stroke-width="0"
+         fill="#ffec99"
+         fill-rule="evenodd"
+         id="path1" />
+      <path
+         d="M 0,0 C -1.76,8.39 -14.83,32.74 -10.54,50.36 -6.25,67.98 14.52,98.9 25.76,105.72 37,112.54 57.85,101.45 56.88,91.29 55.91,81.14 23.29,59.53 19.96,44.79 16.63,30.06 29.4,6.68 36.89,2.89 44.38,-0.91 66.15,29.37 64.92,22.05 63.68,14.73 46.16,-38.47 29.47,-41.01 12.78,-43.55 -30.33,-0.03 -35.24,6.8 -40.15,13.64 -5.87,1.13 0,0 M 0,0 C -1.76,8.39 -14.83,32.74 -10.54,50.36 -6.25,67.98 14.52,98.9 25.76,105.72 37,112.54 57.85,101.45 56.88,91.29 55.91,81.14 23.29,59.53 19.96,44.79 16.63,30.06 29.4,6.68 36.89,2.89 44.38,-0.91 66.15,29.37 64.92,22.05 63.68,14.73 46.16,-38.47 29.47,-41.01 12.78,-43.55 -30.33,-0.03 -35.24,6.8 -40.15,13.64 -5.87,1.13 0,0"
+         stroke="#f08c00"
+         stroke-width="2"
+         fill="none"
+         id="path2" />
+    </g>
+  </g>
+  <mask
+     id="mask3" />
+</svg>

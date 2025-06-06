@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BodyPart0001.png-dc54c4b42fbf59e57bbedc8f6ad0fd26.stex"
+path="res://.import/SpeedArrow.svg-637c50e290e390a04c4bf924483a482c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/BodyPart0001.png"
-dest_files=[ "res://.import/BodyPart0001.png-dc54c4b42fbf59e57bbedc8f6ad0fd26.stex" ]
+source_file="res://Textures/SpeedArrow.svg"
+dest_files=[ "res://.import/SpeedArrow.svg-637c50e290e390a04c4bf924483a482c.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

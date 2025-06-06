@@ -29,6 +29,7 @@ var o_damping = 0.0
 var o_max_speed = 0.0
 var o_speed = 0.0
 var o_jump_speed = 0
+var o_gravity = 0
 
 func _ready():
 	sprite.material.set_shader_param("progress", 0.0)
@@ -38,12 +39,14 @@ func _ready():
 	o_damping = damping
 	o_max_speed = max_speed
 	o_speed = speed
+	o_gravity = gravity
 	stats_changed()
 
 func stats_changed():
 	#speed = o_speed * global_data.stats.SpeedMult
 	max_speed = o_max_speed * global_data.stats.SpeedMult
 	#damping = o_damping * global_data.stats.SpeedMult
+	gravity = o_gravity * global_data.stats.SpeedMult
 	ground_timer.wait_time = start_ground_time * global_data.stats.JumpMult
 	jump_press_timer.wait_time = start_jump_time * global_data.stats.JumpMult
 	#jump_speed = o_jump_speed * global_data.stats.JumpMult
