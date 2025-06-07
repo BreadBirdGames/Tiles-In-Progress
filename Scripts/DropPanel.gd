@@ -62,7 +62,7 @@ func can_drop_data(at_position, data):
 				bottom_grid_node.modulate = data.modulation[1]
 				return false
 			else:
-				bottom_grid_node.module = data.modulation[0]
+				bottom_grid_node.modulate = data.modulation[0]
 		DragItem.Items.Dirt, DragItem.Items.Monster:
 			top_grid_node.show()
 			
