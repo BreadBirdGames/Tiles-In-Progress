@@ -54,25 +54,34 @@ func can_drop_data(at_position, data):
 	
 	var tilemap_position = get_current_tile_pos()
 	
-	if tilemap_node.get_cellv(tilemap_position) == occupied_tile_index:
-		return false
-	
 	match data.item_id:
 		DragItem.Items.Water:
 			bottom_grid_node.show()
+			
 			if tilemap_position.y < 0:
+				bottom_grid_node.modulate = data.modulation[1]
 				return false
+			else:
+				bottom_grid_node.module = data.modulation[0]
 		DragItem.Items.Dirt, DragItem.Items.Monster:
 			top_grid_node.show()
+			
 			if tilemap_position.y > -1:
+				top_grid_node.modulate = data.modulation[1]
 				return false
+			else:
+				top_grid_node.modulate = data.modulation[0]
+			
 		DragItem.Items.JumpUp, DragItem.Items.SpeedUp:
 			for sprite in drop_sprite_nodes:
-				sprite.show()
-				sprite.modulate = data.modulation[0]
+					sprite.show()
+					sprite.modulate = data.modulation[0]
 			
 			if not player_drop_zone_node.position_inside(get_global_mouse_position()):
 				return false
+	
+	if tilemap_node.get_cellv(tilemap_position) == occupied_tile_index:
+		return false
 	
 	return true
 

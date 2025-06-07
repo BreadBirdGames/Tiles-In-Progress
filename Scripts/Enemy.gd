@@ -12,6 +12,8 @@ var left: RayCast2D = null
 var right: RayCast2D = null
 var sprite_node: Sprite = null
 
+var spawner = null
+
 var direction = -1
 var velocity = Vector2()
 
@@ -58,7 +60,8 @@ func _physics_process(delta):
 		sprite_node.material.set_shader_param("progress", t)
 		
 		if t > 1:
-			queue_free()
+			spawner.kill()
+			#queue_free()
 		
 		return
 

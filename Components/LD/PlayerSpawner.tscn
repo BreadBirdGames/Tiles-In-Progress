@@ -57,6 +57,7 @@ shader_param/time_offset = 5.0
 [node name="PlayerSpawner" type="Node2D"]
 script = ExtResource( 2 )
 entity = ExtResource( 3 )
+entity_name = "Player"
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

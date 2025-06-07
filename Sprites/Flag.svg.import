@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SpeedArrow.svg-637c50e290e390a04c4bf924483a482c.stex"
+path="res://.import/Flag.svg-ded0b39ec315751867658e7d9e150241.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/SpeedArrow.svg"
-dest_files=[ "res://.import/SpeedArrow.svg-637c50e290e390a04c4bf924483a482c.stex" ]
+source_file="res://Sprites/Flag.svg"
+dest_files=[ "res://.import/Flag.svg-ded0b39ec315751867658e7d9e150241.stex" ]
 
 [params]
 
@@ -32,4 +32,4 @@ process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
-svg/scale=1.0
+svg/scale=10.0

@@ -22,10 +22,14 @@ func _ready():
 	
 	texture_node.texture = texture
 	
-	if item_type == Items.JumpUp:
-		modulation.append(Color.yellow)
-	elif item_type == Items.SpeedUp:
-		modulation.append(Color.lightblue)
+	match item_type:
+		Items.JumpUp:
+			modulation.append(Color.yellow)
+		Items.SpeedUp:
+			modulation.append(Color.lightblue)
+		Items.Water, Items.Dirt, Items.Monster:
+			modulation.append(Color.white)
+			modulation.append(Color.red)
 
 func get_drag_data(_position):
 	var preview = drag_preview.instance()

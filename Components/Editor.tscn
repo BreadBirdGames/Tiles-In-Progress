@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Components/DragItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/StippledLine.gd" type="Script" id=2]
@@ -6,12 +6,14 @@
 [ext_resource path="res://Sprites/Enemy.png" type="Texture" id=4]
 [ext_resource path="res://Theme.tres" type="Theme" id=5]
 [ext_resource path="res://Sprites/DirtUI.png" type="Texture" id=6]
-[ext_resource path="res://Textures/SpeedArrow.svg" type="Texture" id=7]
+[ext_resource path="res://Sprites/SpeedArrow.svg" type="Texture" id=7]
 [ext_resource path="res://Scripts/DropPanel.gd" type="Script" id=8]
-[ext_resource path="res://Textures/DynaPuff-VariableFont_wdth,wght.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Sprites/DynaPuff-VariableFont_wdth,wght.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://Components/HUD.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Textures/JumpArrow.svg" type="Texture" id=11]
+[ext_resource path="res://Sprites/JumpArrow.svg" type="Texture" id=11]
 [ext_resource path="res://Components/DragPreview.tscn" type="PackedScene" id=12]
+[ext_resource path="res://addons/font-awesome-6/fa-solid-900.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://addons/font-awesome-6/FontAwesome6.gd" type="Script" id=14]
 
 [sub_resource type="Animation" id=2]
 resource_name = "HideUI"
@@ -76,6 +78,30 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( 0, 118 ), Vector2( -208, 0 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("HBoxContainer/VBoxContainer/PanelContainer2:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1e-05 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("HBoxContainer/VBoxContainer/PanelContainer2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -114,6 +140,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HBoxContainer/VBoxContainer/PanelContainer2:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -179,15 +217,42 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( -208, 0 ), Vector2( 0, 118 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("HBoxContainer/VBoxContainer/PanelContainer2:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("HBoxContainer/VBoxContainer/PanelContainer2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
 font_data = ExtResource( 9 )
 
-[node name="Panel" type="Control"]
+[sub_resource type="DynamicFont" id=5]
+size = 80
+font_data = ExtResource( 13 )
+
+[node name="Editor" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 5 )
@@ -317,13 +382,13 @@ alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer"]
 margin_top = 11.0
-margin_right = 524.0
+margin_right = 539.0
 margin_bottom = 89.0
 custom_fonts/font = SubResource( 1 )
-text = "Tiles In Progress"
+text = "Tiles In Progress!"
 
 [node name="Control" type="Control" parent="HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer"]
-margin_left = 528.0
+margin_left = 543.0
 margin_right = 1482.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
@@ -333,12 +398,88 @@ margin_left = 1486.0
 margin_right = 1686.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 200, 100 )
-text = "Play"
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer/PlayButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -10.0
+
+[node name="FontAwesome6" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer/PlayButton/CenterContainer"]
+margin_left = 70.0
+margin_top = 3.0
+margin_right = 130.0
+margin_bottom = 87.0
+custom_fonts/font = SubResource( 5 )
+text = ""
+script = ExtResource( 14 )
+icon_size = 80
+icon_name = "play"
 
 [node name="HUD" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 10 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1706.0
-margin_bottom = 956.0
+margin_bottom = 782.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 910.0
+margin_right = 1706.0
+margin_bottom = 1080.0
+rect_pivot_offset = Vector2( 0, 170 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer2"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1696.0
+margin_bottom = 160.0
+
+[node name="LeftButton" type="Button" parent="HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+margin_right = 150.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer/LeftButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -10.0
+
+[node name="FontAwesome6" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer/LeftButton/CenterContainer"]
+margin_left = 40.0
+margin_top = 28.0
+margin_right = 110.0
+margin_bottom = 112.0
+custom_fonts/font = SubResource( 5 )
+text = ""
+script = ExtResource( 14 )
+icon_size = 80
+icon_name = "arrow-left"
+
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+margin_left = 154.0
+margin_right = 1532.0
+margin_bottom = 150.0
+size_flags_horizontal = 3
+
+[node name="RightButton" type="Button" parent="HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+margin_left = 1536.0
+margin_right = 1686.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer/RightButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -10.0
+
+[node name="FontAwesome6" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer/RightButton/CenterContainer"]
+margin_left = 40.0
+margin_top = 28.0
+margin_right = 110.0
+margin_bottom = 112.0
+custom_fonts/font = SubResource( 5 )
+text = ""
+script = ExtResource( 14 )
+icon_size = 80
+icon_name = "arrow-right"

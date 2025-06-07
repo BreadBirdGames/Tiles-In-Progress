@@ -80,7 +80,7 @@ shader_param/noise_tex = SubResource( 4 )
 radius = 231.0
 height = 362.0
 
-[node name="Player" type="KinematicBody2D" groups=["Drownable", "StatChangeListeners"]]
+[node name="Player" type="KinematicBody2D" groups=["Drownable", "Player", "StatChangeListeners"]]
 script = ExtResource( 2 )
 max_speed = 500.0
 min_jump_speed = -25.0

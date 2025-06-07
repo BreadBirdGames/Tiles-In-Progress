@@ -16,6 +16,8 @@ export(float) var jump_speed = -500
 export(float) var death_speed = 0.4
 var jumped : bool = false
 var motion := Vector2.ZERO
+var root: Main = null
+var spawner = null
 
 #Scale Variables
 var current_direction : int = 1
@@ -52,6 +54,7 @@ func stats_changed():
 	#jump_speed = o_jump_speed * global_data.stats.JumpMult
 
 func drown():
+	root.switch_play_mode(true)
 	kill()
 
 func kill():
@@ -64,7 +67,8 @@ func _physics_process(delta):
 		sprite.material.set_shader_param("progress", t)
 		
 		if t > 1:
-			queue_free()
+			spawner.kill()
+			#queue_free()
 		
 		return
 	

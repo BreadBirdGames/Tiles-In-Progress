@@ -1,6 +1,6 @@
-[gd_resource type="Theme" load_steps=10 format=2]
+[gd_resource type="Theme" load_steps=11 format=2]
 
-[ext_resource path="res://Textures/DynaPuff-VariableFont_wdth,wght.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Sprites/DynaPuff-VariableFont_wdth,wght.ttf" type="DynamicFontData" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=7]
 
@@ -45,6 +45,8 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id=9]
+
 [sub_resource type="DynamicFont" id=1]
 size = 48
 font_data = ExtResource( 1 )
@@ -58,3 +60,7 @@ Button/styles/normal = SubResource( 6 )
 Button/styles/pressed = SubResource( 8 )
 Panel/styles/panel = SubResource( 3 )
 PanelContainer/styles/panel = SubResource( 2 )
+WindowDialog/constants/title_height = 0
+WindowDialog/icons/close = null
+WindowDialog/icons/close_highlight = null
+WindowDialog/styles/panel = SubResource( 9 )

@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "DropZone",
 "language": "GDScript",
 "path": "res://Scripts/DropZone.gd"
+}, {
+"base": "Node2D",
+"class": "Main",
+"language": "GDScript",
+"path": "res://Scripts/Main.gd"
 } ]
 _global_script_class_icons={
 "CustomCamera": "",
 "DragItem": "",
-"DropZone": ""
+"DropZone": "",
+"Main": ""
 }
 
 [application]
@@ -49,7 +55,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/build-and-deploy/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/build-and-deploy/plugin.cfg", "res://addons/font-awesome-6/plugin.cfg" )
 
 [input]
 
