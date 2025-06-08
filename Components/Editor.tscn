@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Components/DragItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/StippledLine.gd" type="Script" id=2]
@@ -242,11 +242,19 @@ tracks/6/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="DynamicFont" id=5]
+size = 80
+font_data = ExtResource( 13 )
+
 [sub_resource type="DynamicFont" id=1]
 size = 64
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
+size = 80
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=7]
 size = 80
 font_data = ExtResource( 13 )
 
@@ -380,15 +388,38 @@ margin_right = 1696.0
 margin_bottom = 110.0
 alignment = 1
 
+[node name="UndoButton" type="Button" parent="HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer/UndoButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -10.0
+mouse_filter = 2
+
+[node name="FontAwesome6" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer/UndoButton/CenterContainer"]
+margin_left = 10.0
+margin_top = 3.0
+margin_right = 90.0
+margin_bottom = 87.0
+custom_fonts/font = SubResource( 5 )
+text = ""
+script = ExtResource( 14 )
+icon_size = 80
+icon_name = "rotate-left"
+
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+margin_left = 104.0
 margin_top = 11.0
-margin_right = 539.0
+margin_right = 643.0
 margin_bottom = 89.0
 custom_fonts/font = SubResource( 1 )
 text = "Tiles In Progress!"
 
 [node name="Control" type="Control" parent="HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer"]
-margin_left = 543.0
+margin_left = 647.0
 margin_right = 1482.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
@@ -403,6 +434,7 @@ rect_min_size = Vector2( 200, 100 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -10.0
+mouse_filter = 2
 
 [node name="FontAwesome6" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer/PlayButton/CenterContainer"]
 margin_left = 70.0
@@ -444,13 +476,14 @@ rect_min_size = Vector2( 150, 150 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -10.0
+mouse_filter = 2
 
 [node name="FontAwesome6" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer/LeftButton/CenterContainer"]
 margin_left = 40.0
 margin_top = 28.0
 margin_right = 110.0
 margin_bottom = 112.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = ""
 script = ExtResource( 14 )
 icon_size = 80
@@ -472,14 +505,17 @@ rect_min_size = Vector2( 150, 150 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -10.0
+mouse_filter = 2
 
 [node name="FontAwesome6" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer/RightButton/CenterContainer"]
 margin_left = 40.0
 margin_top = 28.0
 margin_right = 110.0
 margin_bottom = 112.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = ""
 script = ExtResource( 14 )
 icon_size = 80
 icon_name = "arrow-right"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer/UndoButton" to="." method="_on_UndoButton_pressed"]

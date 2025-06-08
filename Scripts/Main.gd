@@ -8,7 +8,6 @@ onready var camera: CustomCamera = $CameraTarget/Camera
 onready var dialogue: Popup = $CanvasLayer/Popup
 onready var player_spawner = $PlayerSpawner
 
-onready var spawner_list = get_node("/root/GlobalData")
 var button_states = {
 	"Left": false,
 	"Right": false
@@ -32,16 +31,12 @@ func switch_play_mode(newState: bool):
 		camera.change_follow(Vector2.ZERO, Vector2.ONE * 5)
 		button_states["Right"] = false
 		button_states["Left"] = false
-		for spawner in spawner_list.spawners:
+		for spawner in get_tree().get_nodes_in_group("Spawner"):
 			spawner.despawn()
 	else:
-		for spawner in spawner_list.spawners:
-			if spawner.spawned != null:
-				return
-		
 		animation_player.play("HideUI")
 		animation_player.seek(0.0, true)
-		for spawner in spawner_list.spawners:
+		for spawner in get_tree().get_nodes_in_group("Spawner"):
 			var temp_spawned = spawner.spawn()
 			if not is_instance_valid(temp_spawned):
 				spawner.spawned = temp_spawned

@@ -25,6 +25,7 @@ export(PackedScene) var water_tile = null
 export(PackedScene) var enemy = null
 
 onready var global_data = get_node("/root/GlobalData")
+var last_moves = []
 
 func _ready():
 	camera_node = get_node(camera) as Camera2D
@@ -86,46 +87,125 @@ func can_drop_data(at_position, data):
 	return true
 
 func drop_data(_at_position, data):
+	do_action(data.item_id)
+
+func do_action(id):
 	var tilemap_position = get_current_tile_pos()
 	
-	match data.item_id:
+	match id:
 		DragItem.Items.Dirt:
 			tilemap_node.set_cellv(tilemap_position, dirt_tile_index)
 			
-			if tilemap_node.get_cellv(tilemap_position + Vector2(0, 1)) == grass_tile_index:
+			if (tilemap_position + Vector2(0, 1)).y == 0:
 				tilemap_node.set_cellv(tilemap_position + Vector2(0, 1), dirt_tile_index)
 			
 			tilemap_node.update_dirty_quadrants()
+			
+			last_moves.append({
+				"id": id,
+				"pos": tilemap_position
+			})
 			continue
 		DragItem.Items.Water:
+			if tilemap_position.y != 0:
+				return
+			
 			var tile = water_tile.instance()
 			tile.global_position = tilemap_node.map_to_world(tilemap_position)
 			tilemap_node.set_cellv(tilemap_position, -1)
 			tilemap_node.add_child(tile)
+			
+			last_moves.append({
+				"id": id,
+				"pos": tilemap_position,
+				"obj": tile
+			})
 			continue
 		DragItem.Items.Monster:
 			var tile = enemy.instance()
 			tile.global_position = tilemap_node.map_to_world(tilemap_position)
 			tilemap_node.set_cellv(tilemap_position, occupied_tile_index)
 			tilemap_node.add_child(tile)
+			
+			last_moves.append({
+				"id": id,
+				"pos": tilemap_position,
+				"obj": tile
+			})
 			continue
 		DragItem.Items.JumpUp:
 			global_data.stats.DispJumpMult += 1
 			global_data.stats.JumpMult += 0.5
+			
+			last_moves.append({
+				"id": id
+			})
 			continue
 		DragItem.Items.SpeedUp:
 			global_data.stats.SpeedMult += 1
+			
+			last_moves.append({
+				"id": id
+			})
 			continue
 		DragItem.Items.None:
 			continue
 		_:
 			continue
 
+func undo_action():
+	var id = last_moves[-1]["id"]
+	
+	var tilemap_position = null
+	if last_moves[-1].has("pos"):
+		tilemap_position = last_moves[-1]["pos"]
+	
+	var object
+	if last_moves[-1].has("obj"):
+		object = last_moves[-1]["obj"]
+	
+	match id:
+		DragItem.Items.Dirt:
+			tilemap_node.set_cellv(tilemap_position, -1)
+			
+			if (tilemap_position + Vector2(0, 1)).y == 0:
+				tilemap_node.set_cellv(tilemap_position + Vector2(0, 1), grass_tile_index)
+			
+			tilemap_node.update_dirty_quadrants()
+			continue
+		DragItem.Items.Water:
+			if tilemap_position.y != 0:
+				return
+			
+			object.queue_free()
+			tilemap_node.set_cellv(tilemap_position, grass_tile_index)
+			continue
+		DragItem.Items.Monster:
+			object.queue_free()
+			tilemap_node.set_cellv(tilemap_position, -1)
+			continue
+		DragItem.Items.JumpUp:
+			global_data.stats.DispJumpMult -= 1
+			global_data.stats.JumpMult -= 0.5
+			continue
+		DragItem.Items.SpeedUp:
+			global_data.stats.SpeedMult -= 1
+			continue
+		DragItem.Items.None:
+			continue
+		_:
+			continue
+	
+	last_moves.pop_back()
+
 func _notification(what):
-	#if what == NOTIFICATION_DRAG_BEGIN:
 	if what == NOTIFICATION_DRAG_END:
 		top_grid_node.hide()
 		bottom_grid_node.hide()
 		
 		for sprite in drop_sprite_nodes:
 			sprite.hide()
+
+func _on_UndoButton_pressed():
+	if len(last_moves) != 0:
+		undo_action()

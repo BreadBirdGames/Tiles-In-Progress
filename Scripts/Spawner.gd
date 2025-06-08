@@ -2,15 +2,11 @@ extends Node2D
 
 export(PackedScene) var entity = null
 export var offset: Vector2 = Vector2(0, 0)
-onready var spawner_list = get_node("/root/GlobalData")
 onready var sprite: Sprite = $Sprite
 export(String) var entity_name: String = ""
 var spawned
 
 export(NodePath) var root_path = null
-
-func _ready():
-	spawner_list.spawners.append(self)
 
 func spawn():
 	if is_instance_valid(spawned):

@@ -54,7 +54,7 @@ shader_param/inner_radius = 0.275
 shader_param/speed = 2.0
 shader_param/time_offset = 5.0
 
-[node name="PlayerSpawner" type="Node2D"]
+[node name="PlayerSpawner" type="Node2D" groups=["Spawner"]]
 script = ExtResource( 2 )
 entity = ExtResource( 3 )
 entity_name = "Player"

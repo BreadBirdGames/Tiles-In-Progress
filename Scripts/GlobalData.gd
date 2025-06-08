@@ -1,7 +1,5 @@
 extends Node
 
-var spawners = []
-
 var stats = {
 	"DispJumpMult": 1,
 	"JumpMult": 1,
