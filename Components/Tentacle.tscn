@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Sprites/Tentacle.svg" type="Texture" id=1]
+
+[node name="Tentacle" type="Node2D"]
+scale = Vector2( 2, 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( -35, -400 )
+texture = ExtResource( 1 )
+skeleton = NodePath("../Skeleton2D")
+polygon = PoolVector2Array( 60, 0, 60, 100, 60, 200, 70, 300, 70, 430, 1.52588e-05, 430, 0, 300, 10, 200, 10, 100, 10, 0, 35.2713, 359.69, 34.8837, 250, 36.0465, 149.225, 33.3333, 49.2248 )
+uv = PoolVector2Array( 60, 0, 60, 100, 60, 200, 70, 300, 70, 430, 1.52588e-05, 430, 0, 300, 10, 200, 10, 100, 10, 0, 30, 360, 30, 250, 30, 150, 30, 50 )
+polygons = [ PoolIntArray( 5, 10, 6 ), PoolIntArray( 5, 4, 10 ), PoolIntArray( 10, 3, 4 ), PoolIntArray( 10, 3, 6 ), PoolIntArray( 3, 11, 6 ), PoolIntArray( 11, 2, 3 ), PoolIntArray( 11, 7, 6 ), PoolIntArray( 11, 7, 2 ), PoolIntArray( 12, 7, 2 ), PoolIntArray( 12, 1, 2 ), PoolIntArray( 12, 8, 7 ), PoolIntArray( 12, 8, 1 ), PoolIntArray( 8, 13, 1 ), PoolIntArray( 8, 13, 9 ), PoolIntArray( 13, 0, 1 ), PoolIntArray( 13, 0, 9 ) ]
+bones = [ "Base", PoolRealArray( 0, 0, 0, 0.5, 0.5, 0.5, 0.5, 0, 0, 0, 1, 0, 0, 0 ), "Base/Start", PoolRealArray( 0, 0, 0.5, 0.5, 0, 0, 0.5, 0.5, 0, 0, 0, 1, 0, 0 ), "Base/Start/Middle", PoolRealArray( 0, 0.5, 0.5, 0, 0, 0, 0, 0.5, 0.5, 0, 0, 0, 1, 0 ), "Base/Start/Middle/End", PoolRealArray( 0.5, 0.5, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0, 0, 0, 1 ) ]
+internal_vertex_count = 4
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+rotation = -1.5708
+
+[node name="Base" type="Bone2D" parent="Skeleton2D"]
+rest = Transform2D( 1, 0, 0, 1, 0, 0 )
+default_length = 100.0
+
+[node name="Start" type="Bone2D" parent="Skeleton2D/Base"]
+position = Vector2( 100, 0 )
+rest = Transform2D( 1, 0, 0, 1, 100, 0 )
+default_length = 100.0
+
+[node name="Middle" type="Bone2D" parent="Skeleton2D/Base/Start"]
+position = Vector2( 100, 0 )
+rest = Transform2D( 1, 0, 0, 1, 100, 0 )
+default_length = 100.0
+
+[node name="End" type="Bone2D" parent="Skeleton2D/Base/Start/Middle"]
+position = Vector2( 100, 0 )
+rest = Transform2D( 1, 0, 0, 1, 100, 0 )
+default_length = 100.0

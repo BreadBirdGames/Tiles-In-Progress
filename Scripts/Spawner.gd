@@ -35,4 +35,5 @@ func kill():
 
 func despawn():
 	sprite.visible = true
-	spawned.kill()
+	if spawned != null:
+		spawned.kill()

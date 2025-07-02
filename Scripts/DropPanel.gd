@@ -24,6 +24,8 @@ export var occupied_tile_index = 2
 export(PackedScene) var water_tile = null
 export(PackedScene) var enemy = null
 
+onready var drop_cooldown = $Timer
+onready var hud = $HBoxContainer/VBoxContainer/HUD
 onready var global_data = get_node("/root/GlobalData")
 var last_moves = []
 
@@ -51,6 +53,9 @@ func get_current_tile_pos():
 
 func can_drop_data(at_position, data):
 	if data.type != "DropItem":
+		return false
+	
+	if not drop_cooldown.is_stopped():
 		return false
 	
 	var tilemap_position = get_current_tile_pos()
@@ -81,13 +86,18 @@ func can_drop_data(at_position, data):
 			if not player_drop_zone_node.position_inside(get_global_mouse_position()):
 				return false
 	
-	if tilemap_node.get_cellv(tilemap_position) == occupied_tile_index:
+	if (
+		tilemap_node.get_cellv(tilemap_position) == occupied_tile_index && 
+		data.item_id != DragItem.Items.JumpUp &&
+		data.item_id != DragItem.Items.SpeedUp
+		):
 		return false
 	
 	return true
 
 func drop_data(_at_position, data):
 	do_action(data.item_id)
+	drop_cooldown.start()
 
 func do_action(id):
 	var tilemap_position = get_current_tile_pos()
@@ -209,3 +219,9 @@ func _notification(what):
 func _on_UndoButton_pressed():
 	if len(last_moves) != 0:
 		undo_action()
+
+func _process(delta):
+	hud.progress_changed(drop_cooldown.time_left/drop_cooldown.wait_time)
+
+func _on_Timer_timeout():
+	hud.progress_changed(0)

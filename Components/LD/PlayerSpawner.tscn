@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Sprites/Player.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Spawner.gd" type="Script" id=2]
-[ext_resource path="res://Components/2DPlatformerController.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/DropZone.gd" type="Script" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]
 

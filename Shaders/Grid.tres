@@ -14,6 +14,10 @@ uniform float position : hint_range(-0.5, 0.5) = 0.0;
 uniform float shader_size : hint_range(0.5, 5) = 0.5;
 uniform float angle : hint_range(0.0, 360.0) = 0.0;
 
+uniform float divide = 0.065;      
+uniform float blur = 0.385;        
+uniform float fade_width = 0.995;  
+
 void fragment() {
 	vec2 uv = (offset / size) + UV;
 	vec2 r = mod(size * uv, vec2(grid_size));
@@ -22,6 +26,18 @@ void fragment() {
 	
 	COLOR = color;
 	COLOR.a = alpha;
+	
+	float left_fade_edge = fade_width;
+
+	float leftFade = 1.0;
+	
+	// Normalize to 0..1 within the fade width region
+	if (UV.x < left_fade_edge) {
+		float px = (1.0 - UV.x) / fade_width;
+		leftFade = smoothstep(divide, divide + blur, px);
+	}
+	
+	COLOR = mix(COLOR, color, leftFade);
 	
 	float pivot = position + 0.5;
 	uv = UV - pivot;
@@ -41,3 +57,6 @@ shader_param/grid_size = 54.0
 shader_param/position = 0.45
 shader_param/shader_size = 0.55
 shader_param/angle = 270.0
+shader_param/divide = 0.45
+shader_param/blur = 0.01
+shader_param/fade_width = 2.185

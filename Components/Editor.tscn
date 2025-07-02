@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Components/DragItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/StippledLine.gd" type="Script" id=2]
@@ -258,6 +258,10 @@ font_data = ExtResource( 13 )
 size = 80
 font_data = ExtResource( 13 )
 
+[sub_resource type="DynamicFont" id=8]
+size = 80
+font_data = ExtResource( 13 )
+
 [node name="Editor" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -270,6 +274,9 @@ script = ExtResource( 8 )
 anims/HideUI = SubResource( 2 )
 anims/RESET = SubResource( 3 )
 anims/ShowUI = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
@@ -441,7 +448,7 @@ margin_left = 70.0
 margin_top = 3.0
 margin_right = 130.0
 margin_bottom = 87.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = ""
 script = ExtResource( 14 )
 icon_size = 80
@@ -483,7 +490,7 @@ margin_left = 40.0
 margin_top = 28.0
 margin_right = 110.0
 margin_bottom = 112.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = ""
 script = ExtResource( 14 )
 icon_size = 80
@@ -512,10 +519,11 @@ margin_left = 40.0
 margin_top = 28.0
 margin_right = 110.0
 margin_bottom = 112.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = ""
 script = ExtResource( 14 )
 icon_size = 80
 icon_name = "arrow-right"
 
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer/UndoButton" to="." method="_on_UndoButton_pressed"]
