@@ -165,6 +165,7 @@ position = Vector2( 0, -1500 )
 
 [node name="Camera" parent="CameraTarget" instance=ExtResource( 7 )]
 pause_mode = 2
+current = false
 speed = 50.0
 limit_right_pos = 10575.0
 FOLLOW_SPEED = 2.5
@@ -183,6 +184,7 @@ position = Vector2( 0, -5120 )
 position = Vector2( 0, 3075 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchor_right = 1.0
@@ -202,6 +204,9 @@ player_drop_zone = NodePath("../../../PlayerSpawner/DropZone")
 drop_sprites = [ NodePath("../../../PlayerSpawner/Pulse1"), NodePath("../../../PlayerSpawner/Pulse2") ]
 water_tile = ExtResource( 4 )
 enemy = ExtResource( 8 )
+
+[node name="PanelContainer" parent="CanvasLayer/MarginContainer/Editor/HBoxContainer" index="0"]
+margin_right = 204.0
 
 [node name="FontAwesome6" parent="CanvasLayer/MarginContainer/Editor/HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer/UndoButton/CenterContainer" index="0"]
 custom_fonts/font = SubResource( 14 )
