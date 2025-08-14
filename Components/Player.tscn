@@ -322,6 +322,7 @@ extents = Vector2( 150, 375 )
 
 [node name="Player" type="KinematicBody2D" groups=["Drownable", "Player", "StatChangeListeners"]]
 script = ExtResource( 2 )
+speed = 50.0
 max_speed = 500.0
 min_jump_speed = -25.0
 jump_speed = -1150.0
@@ -463,7 +464,6 @@ default_length = 100.0
 [node name="ear-right" type="Bone2D" parent="Skeleton2D/root/chest/head"]
 position = Vector2( -170, -315 )
 rotation = -2.35619
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.707107, -0.707107, 0.707107, -0.707107, -170, -315 )
 default_length = 100.0
 

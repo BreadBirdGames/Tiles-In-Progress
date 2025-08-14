@@ -10,7 +10,7 @@
 [ext_resource path="res://Components/LD/EnemySpawner.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Shaders/Grid.tres" type="Material" id=9]
 [ext_resource path="res://addons/font-awesome-6/fa-solid-900.ttf" type="DynamicFontData" id=10]
-[ext_resource path="res://Components/LD/Finish.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Components/LD/FinishSpawner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Theme.tres" type="Theme" id=12]
 [ext_resource path="res://Scripts/StippledLine.gd" type="Script" id=13]
 [ext_resource path="res://Sound/Soundtrack.mp3" type="AudioStream" id=14]
@@ -165,7 +165,6 @@ position = Vector2( 0, -1500 )
 
 [node name="Camera" parent="CameraTarget" instance=ExtResource( 7 )]
 pause_mode = 2
-current = false
 speed = 50.0
 limit_right_pos = 10575.0
 FOLLOW_SPEED = 2.5
@@ -184,7 +183,6 @@ position = Vector2( 0, -5120 )
 position = Vector2( 0, 3075 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchor_right = 1.0
@@ -201,6 +199,7 @@ tilemap = NodePath("../../../TileMap")
 top_grid = NodePath("../../../TopGrid")
 bottom_grid = NodePath("../../../BottomGrid")
 player_drop_zone = NodePath("../../../PlayerSpawner/DropZone")
+finish_spawner = NodePath("../../../FinishSpawner")
 drop_sprites = [ NodePath("../../../PlayerSpawner/Pulse1"), NodePath("../../../PlayerSpawner/Pulse2") ]
 water_tile = ExtResource( 4 )
 enemy = ExtResource( 8 )
@@ -312,8 +311,8 @@ material = SubResource( 8 )
 [node name="Pulse2" parent="PlayerSpawner" index="3"]
 material = SubResource( 9 )
 
-[node name="Finish" parent="." instance=ExtResource( 11 )]
-position = Vector2( 14600, 0 )
+[node name="FinishSpawner" parent="." instance=ExtResource( 11 )]
+root_path = NodePath("..")
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Editor/HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="button_down" from="CanvasLayer/MarginContainer/Editor/HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer/LeftButton" to="." method="_on_LeftButton_button_down"]
@@ -321,7 +320,6 @@ position = Vector2( 14600, 0 )
 [connection signal="button_down" from="CanvasLayer/MarginContainer/Editor/HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer/RightButton" to="." method="_on_RightButton_button_down"]
 [connection signal="button_up" from="CanvasLayer/MarginContainer/Editor/HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer/RightButton" to="." method="_on_RightButton_button_up"]
 [connection signal="pressed" from="CanvasLayer/Popup/PanelContainer/VBoxContainer/OKButton" to="." method="_on_OKButton_pressed"]
-[connection signal="body_entered" from="Finish" to="." method="_on_Finish_body_entered"]
 
 [editable path="CanvasLayer/MarginContainer/Editor"]
 [editable path="PlayerSpawner"]

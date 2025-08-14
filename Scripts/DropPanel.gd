@@ -15,6 +15,9 @@ var bottom_grid_node: Node2D = null
 export(NodePath) var player_drop_zone = null
 var player_drop_zone_node: DropZone = null
 
+export(NodePath) var finish_spawner = null
+var finish_spawner_node: FinishSpawner = null
+
 export(Array, NodePath) var drop_sprites = []
 var drop_sprite_nodes = []
 
@@ -32,6 +35,7 @@ var last_moves = []
 func _ready():
 	camera_node = get_node(camera) as Camera2D
 	tilemap_node = get_node(tilemap) as TileMap
+	finish_spawner_node = get_node(finish_spawner) as FinishSpawner
 	
 	top_grid_node = get_node(top_grid) as Node2D
 	top_grid_node.hide()
@@ -69,7 +73,7 @@ func can_drop_data(at_position, data):
 				return false
 			else:
 				bottom_grid_node.modulate = data.modulation[0]
-		DragItem.Items.Dirt, DragItem.Items.Monster:
+		DragItem.Items.Dirt, DragItem.Items.Monster, DragItem.Items.Flag:
 			top_grid_node.show()
 			
 			if tilemap_position.y > -1:
@@ -158,6 +162,16 @@ func do_action(id):
 				"id": id
 			})
 			continue
+		DragItem.Items.Flag:
+			var prevPos = finish_spawner_node.global_position
+			finish_spawner_node.global_position = tilemap_node.map_to_world(tilemap_position + Vector2.ONE)
+			
+			last_moves.append({
+				"id": id,
+				"pos": prevPos
+			})
+			
+			continue
 		DragItem.Items.None:
 			continue
 		_:
@@ -200,6 +214,9 @@ func undo_action():
 			continue
 		DragItem.Items.SpeedUp:
 			global_data.stats.SpeedMult -= 1
+			continue
+		DragItem.Items.Flag:
+			finish_spawner_node.global_position = tilemap_position
 			continue
 		DragItem.Items.None:
 			continue

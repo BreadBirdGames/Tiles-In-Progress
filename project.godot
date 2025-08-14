@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://Scripts/DropZone.gd"
 }, {
 "base": "Node2D",
+"class": "FinishSpawner",
+"language": "GDScript",
+"path": "res://Components/LD/FinishSpawner.gd"
+}, {
+"base": "Node2D",
 "class": "Main",
 "language": "GDScript",
 "path": "res://Scripts/Main.gd"
@@ -33,6 +38,7 @@ _global_script_class_icons={
 "CustomCamera": "",
 "DragItem": "",
 "DropZone": "",
+"FinishSpawner": "",
 "Main": ""
 }
 

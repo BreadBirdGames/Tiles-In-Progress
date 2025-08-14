@@ -7,7 +7,8 @@ enum Items {
 	Water,
 	Monster,
 	SpeedUp,
-	JumpUp
+	JumpUp,
+	Flag
 }
 
 export(Items) var item_type
@@ -27,7 +28,7 @@ func _ready():
 			modulation.append(Color.yellow)
 		Items.SpeedUp:
 			modulation.append(Color.lightblue)
-		Items.Water, Items.Dirt, Items.Monster:
+		Items.Water, Items.Dirt, Items.Monster, Items.Flag:
 			modulation.append(Color.white)
 			modulation.append(Color.red)
 
